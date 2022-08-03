@@ -9,7 +9,7 @@ public class Account {
   public Account(String username, String password) {
     this.username = username;
     this.password = password;
-    this.id = ++count;
+    this.id = count++;
   }
 
   public String getUsername() {
@@ -20,7 +20,7 @@ public class Account {
     return this.id;
   }
 
-  public boolean authenticate(String password) {
-    return this.password.equals(password);
+  public boolean authenticate(String username, String password) {
+    return this.username.equals(username) && this.password.equals(password);
   }
 }

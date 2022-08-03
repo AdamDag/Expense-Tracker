@@ -21,7 +21,11 @@ public class AccountsManager {
   public boolean login(String username, String password) {
     if (this.doesAccountExist(username)) {
       for (Account account : this.accounts) {
-        if (account.getUsername().equals(username)) return account.authenticate(password);
+        if (account.authenticate(username, password)) {
+          this.loggedInAccountId = account.getAccountId();
+
+          return true;
+        } 
       }
     }
 
