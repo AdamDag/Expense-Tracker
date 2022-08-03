@@ -10,31 +10,35 @@ public class AccountsManager {
     this.accounts = new ArrayList<Account>(); 
   }
 
-  private Account findAccount(String username) {
-    for (int i = 0; i < this.accounts.size(); i++) {
-      Account currentAccount = this.accounts.get(i);
-
-      if (currentAccount.getUsername().equals(username)) {
-        return currentAccount;
-      }
+  private boolean doesAccountExist(String username) {
+    for (Account account : this.accounts) {
+      if (account.getUsername().equals(username)) return true;
     }
 
-    return new Account("", "");
+    return false;
   }
 
   public boolean login(String username, String password) {
-    Account foundAccount = this.findAccount(username);
-
-    if (this.findAccount(username).authenticate(password)) {
-      this.loggedInAccountId = foundAccount.getAccountId();
-    } else {
-      return false;
+    if (this.doesAccountExist(username)) {
+      for (Account account : this.accounts) {
+        if (account.getUsername().equals(username)) return account.authenticate(password);
+      }
     }
 
-    return true;
+    return false;
   }
 
   public Account getCurrentAccount() {
     return this.accounts.get(this.loggedInAccountId);
+  }
+
+  public boolean addAccount(Account newAccount) {
+    if (!this.doesAccountExist(newAccount.getUsername())) {
+      this.accounts.add(newAccount);
+      
+      return true;
+    }
+
+    return false;
   }
 }
