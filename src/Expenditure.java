@@ -1,38 +1,46 @@
 public class Expenditure {
-   private String name;
-   private String category;
-   private String amount;
-   private String date;
+  private String name;
+  private String categoryName;
+  private double amount;
+  private String date;
 
-   public Expenditure(String name, String amount, String category) {
-      this.name = name;
-      this.amount = amount;
-      this.category = category;
-   }
+  public Expenditure(String name, double amount, String categoryName) {
+    this.name = name;
+    this.amount = amount;
+    this.categoryName = categoryName;
+    // we need to set the date here, in the constructor
+    // once the instance is created
+  }
 
-   //getter and setter methods
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public String getCategory() {
-        return category;
-    }
-    public void setCategory(String category) {
-        this.category = category;
-    }
-    public String getAmount() {
-        return amount;
-    }
-    public void setAmount(String amount) {
-        this.amount = amount;
-    }
-    public String getDate() {
-        return date;
-    }
-    public void setDate(String date) {
-        this.date = date;
-    }
+  public String getName() {
+    return this.name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public String getCategoryName() {
+    return this.categoryName;
+  }
+
+  public void setCategory(String categoryName) {
+    this.categoryName = categoryName;
+  }
+
+  public double getAmount() {
+    return this.amount;
+  }
+
+  public void setAmount(double amount) {
+    this.amount = amount;
+  }
+
+  public String getDate() {
+    return this.date;
+  }
+
+  public void setDate(String date) {
+    this.date = date;
+  }
 }
