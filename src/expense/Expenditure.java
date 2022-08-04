@@ -1,3 +1,5 @@
+package expense;
+
 public class Expenditure {
   private String name;
   private String categoryName;

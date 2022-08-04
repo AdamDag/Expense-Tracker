@@ -1,4 +1,8 @@
 import java.util.*;
+
+import expense.Expenditure;
+import expense.ExpenditureCategory;
+
 import java.io.*;
 
 public class App {
