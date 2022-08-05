@@ -9,6 +9,7 @@ import expense.ExpenditureCategory;
 
 import util.InputManager;
 import util.PrintManager;
+import util.SerializationManager;
 
 class DisplayManager {
   private InputManager inputManager;
@@ -129,7 +130,7 @@ class DisplayManager {
 
 public class App {
   public static void main(String[] args) throws Exception {
-    AccountsManager accountsManager = new AccountsManager();
+    AccountsManager accountsManager = SerializationManager.deserialize();
     InputManager inputManager = new InputManager();
     DisplayManager displayManager = new DisplayManager(inputManager, accountsManager);
 
@@ -151,6 +152,7 @@ public class App {
         InputManager.promptEnterKey("View expenditures..."); 
       } else if (userEntry == 4) {
         System.out.println("Exiting program...");
+        SerializationManager.serialize(accountsManager);
         break;
       } else {
         userEntry = displayManager.displayMainMenu();
