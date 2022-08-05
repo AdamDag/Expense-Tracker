@@ -1,11 +1,12 @@
 package account;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import expense.Expenditure;
 import expense.ExpenditureCategory;
 
-public class Account {
+public class Account implements Serializable {
   private static int count = 0;
   private String username;
   private String password;

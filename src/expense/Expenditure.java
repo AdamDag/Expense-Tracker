@@ -1,6 +1,8 @@
 package expense;
 
-public class Expenditure {
+import java.io.Serializable;
+
+public class Expenditure implements Serializable {
   private String name;
   private String categoryName;
   private double amount;

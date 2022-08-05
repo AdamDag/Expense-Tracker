@@ -1,6 +1,8 @@
 package expense;
 
-public class ExpenditureCategory {
+import java.io.Serializable;
+
+public class ExpenditureCategory implements Serializable {
   private String name;
   private String description;
 
