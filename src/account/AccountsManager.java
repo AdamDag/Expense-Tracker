@@ -19,6 +19,10 @@ public class AccountsManager implements Serializable {
     return false;
   }
 
+  public ArrayList<Account> getAccounts() {
+    return this.accounts;
+  }
+
   public boolean login(String username, String password) {
     if (this.doesAccountExist(username)) {
       for (Account account : this.accounts) {

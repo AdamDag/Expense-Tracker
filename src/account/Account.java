@@ -22,6 +22,10 @@ public class Account implements Serializable {
     this.expenditureCategories = new ArrayList<ExpenditureCategory>();
   }
 
+  public static void setCount(int count) {
+    Account.count = count;
+  }
+
   public String getUsername() {
     return this.username;
   }

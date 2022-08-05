@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import account.Account;
 import account.AccountsManager;
 
 public final class SerializationManager {
@@ -30,6 +31,7 @@ public final class SerializationManager {
       AccountsManager retrievedAccountsData = (AccountsManager)dataInput.readObject();
       dataInput.close();
       file.close();
+      Account.setCount(retrievedAccountsData.getAccounts().size());
       return retrievedAccountsData;
     } catch (IOException exception) {
       System.out.println("IOException was caught!");
