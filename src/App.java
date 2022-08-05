@@ -118,8 +118,6 @@ class DisplayManager {
     PrintManager.displayHorizontalLine();
     PrintManager.displayBreadcrumbs("Main Menu / Add Expenditure Category");
     String name = this.inputManager.getUserInlineTextInput("Enter expenditue category name: ");
-    // need to add next line check
-    // because currently, inputs are delimited by spaces
     String description = this.inputManager.getUserInlineTextInput("Enter expenditure category description: ");
 
     ExpenditureCategory newExpenditureCategory = new ExpenditureCategory(name, description);

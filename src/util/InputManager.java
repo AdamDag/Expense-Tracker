@@ -11,10 +11,11 @@ public class InputManager {
 
   public String getUserInlineTextInput(String queryText) {
     System.out.print(queryText);
+    this.scanner.useDelimiter("\n");
     String input = this.scanner.next();
     System.lineSeparator();
 
-    return input;
+    return input.trim();
   }
 
   public int getUserOptionChoice(String queryText) {
