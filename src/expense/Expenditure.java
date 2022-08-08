@@ -1,17 +1,24 @@
 package expense;
 
-public class Expenditure {
+import java.io.Serializable;
+import util.CurrentDateTime;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter; 
+
+public class Expenditure implements Serializable {
   private String name;
   private String categoryName;
   private double amount;
   private String date;
+  private LocalDateTime rawDate;
 
   public Expenditure(String name, double amount, String categoryName) {
     this.name = name;
     this.amount = amount;
     this.categoryName = categoryName;
-    // we need to set the date here, in the constructor
-    // once the instance is created
+    this.date = CurrentDateTime.dateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+    this.rawDate = CurrentDateTime.dateTime();
   }
 
   public String getName() {
@@ -42,7 +49,7 @@ public class Expenditure {
     return this.date;
   }
 
-  public void setDate(String date) {
-    this.date = date;
+  public LocalDateTime getRawDate() {
+    return this.rawDate;
   }
 }
