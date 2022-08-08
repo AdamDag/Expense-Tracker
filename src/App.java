@@ -1,11 +1,3 @@
-<<<<<<< Updated upstream
-import java.util.*;
-
-import expense.Expenditure;
-import expense.ExpenditureCategory;
-
-import java.io.*;
-=======
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -212,7 +204,6 @@ class DisplayManager {
  
   }
 }
->>>>>>> Stashed changes
 
 public class App {
   public static void main(String[] args) throws Exception {
