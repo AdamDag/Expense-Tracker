@@ -29,4 +29,9 @@ public final class PrintManager {
     System.out.println(path);
     System.out.println("===========================================================================================================");
   }
+
+  public static void displayExpenditureTableHeading() {
+    System.out.println("Name                     | Category name            | Amount                   | Date               ");
+    PrintManager.displayHorizontalLine();
+  }
 }

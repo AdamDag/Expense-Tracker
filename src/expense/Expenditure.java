@@ -52,4 +52,16 @@ public class Expenditure implements Serializable {
   public LocalDateTime getRawDate() {
     return this.rawDate;
   }
+
+  public String toString() {
+    String emptyCell = new String(new char[25]).replace("\0", " ");
+    String amountStr = Double.toString(this.amount);
+
+    String nameCell = this.name + emptyCell.substring(this.name.length() + 1);
+    String categoryCell = this.categoryName + emptyCell.substring(this.categoryName.length() + 1);
+    String amountCell = amountStr + emptyCell.substring(amountStr.length() + 1);
+    String dateCell = this.date + emptyCell.substring(this.date.length() + 1);
+    
+    return nameCell + " | " + categoryCell + " | " + amountCell + " | " + dateCell;
+  }
 }
