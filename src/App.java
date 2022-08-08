@@ -1,4 +1,7 @@
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 import account.Account;
 import account.AccountsManager;
@@ -125,6 +128,131 @@ class DisplayManager {
 
     InputManager.promptEnterKey("Expenditure category added! Press Enter to return to main menu...");
   }
+
+  public void displayViewAllExpenditures() throws IOException{
+    PrintManager.displayHorizontalLine();
+    PrintManager.displayBreadcrumbs("Main Menu / View Expenditures / View all");
+    ArrayList<Expenditure> expenditures = this.accountsManager.getCurrentAccount().getExpenditures();
+
+    if (expenditures.size() <= 0) {
+      System.out.println("No expenditures found!");
+    } else {
+      PrintManager.clearConsole();
+      PrintManager.displayHorizontalLine();
+      PrintManager.displayBreadcrumbs("Main Menu / View Expenditures / View all");
+      PrintManager.displayExpenditureTableHeading();
+      for (Expenditure expenditure : expenditures) {
+        System.out.println(expenditure.toString());
+      }
+    }
+
+    InputManager.promptEnterKey("Press Enter to return to main menu...");
+  }
+
+  public void displayViewExpendituresByCategory() throws IOException{
+    PrintManager.displayHorizontalLine();
+    PrintManager.displayBreadcrumbs("Main Menu / View Expenditures / View by category");
+    String[] categoryNames = this.accountsManager.getCurrentAccount().getExpenditureCategoryNames();
+    PrintManager.displayOptions(categoryNames);
+    int userChoice = this.inputManager.getUserOptionChoice();
+    String expenditureCategoryName = categoryNames[userChoice <= 0 ? 0 : userChoice - 1];
+    ArrayList<Expenditure> expenditures = this.accountsManager.getCurrentAccount().getExpendituresByCategory(expenditureCategoryName);
+  
+    if (expenditures.size() <= 0) {
+      System.out.println("No expenditures found!");
+    } else {
+      PrintManager.clearConsole();
+      PrintManager.displayHorizontalLine();
+      PrintManager.displayBreadcrumbs("Main Menu / View Expenditures / View by category");
+      PrintManager.displayExpenditureTableHeading();
+      for (Expenditure expenditure : expenditures) {
+        System.out.println(expenditure.toString());
+      }
+    }
+
+    InputManager.promptEnterKey("Press Enter to return to main menu..."); 
+  }
+
+  public void displayViewExpendituresByAmount() throws IOException{
+    PrintManager.displayHorizontalLine();
+    PrintManager.displayBreadcrumbs("Main Menu / View Expenditures / View by amount");
+    ArrayList<Expenditure> expenditures = this.accountsManager.getCurrentAccount().getExpenditures();
+    String filterAmount = this.inputManager.getUserInlineTextInput("Enter minimum expenditure filter amount: ");
+    if (expenditures.size() <= 0) {
+      System.out.println("No expenditures found!");
+    } else {
+      PrintManager.clearConsole();
+      PrintManager.displayHorizontalLine();
+      PrintManager.displayBreadcrumbs("Main Menu / View Expenditures / View by amount");
+      PrintManager.displayExpenditureTableHeading();
+      for (Expenditure expenditure : expenditures) {
+        if (expenditure.getAmount() >= Double.parseDouble(filterAmount)) {
+          System.out.println(expenditure.toString());
+        }
+      }
+    }
+
+    InputManager.promptEnterKey("Press Enter to return to main menu..."); 
+  }
+
+  public void displayViewExpendituresByDate() throws IOException{
+    PrintManager.displayHorizontalLine();
+    PrintManager.displayBreadcrumbs("Main Menu / View Expenditures / View by date");
+    ArrayList<Expenditure> expenditures = this.accountsManager.getCurrentAccount().getExpenditures();
+    String filterDate = this.inputManager.getUserInlineTextInput("Enter minimum expenditure filter date in the form 'yyyy-MM-dd HH:mm:ss': ");
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    LocalDateTime filterDateTime = LocalDateTime.parse(filterDate, formatter);
+
+    if (expenditures.size() <= 0) {
+      System.out.println("No expenditures found!");
+    } else {
+      PrintManager.clearConsole();
+      PrintManager.displayHorizontalLine();
+      PrintManager.displayBreadcrumbs("Main Menu / View Expenditures / View by date");
+      PrintManager.displayExpenditureTableHeading();
+      for (Expenditure expenditure : expenditures) {
+        if (expenditure.getRawDate().compareTo(filterDateTime) >= 0) {
+          System.out.println(expenditure.toString());
+        }
+      }
+    }
+
+    InputManager.promptEnterKey("Press Enter to return to main menu..."); 
+  }
+
+  public void displayViewExpendituresMenu() throws IOException {
+    PrintManager.displayHorizontalLine();
+    PrintManager.displayBreadcrumbs("Main Menu / View Expenditures");
+    String[] options = {
+      "View all expenditures",
+      "View expenditures by category",
+      "View expenditures by amount",
+      "View expenditures by date",
+      "Return to main screen"
+    };
+    PrintManager.displayOptions(options);
+    int userChoice = this.inputManager.getUserOptionChoice();
+
+    if (userChoice == 1) {
+      PrintManager.clearConsole();
+      this.displayViewAllExpenditures();
+    }
+
+    if (userChoice == 2) {
+      PrintManager.clearConsole();
+      this.displayViewExpendituresByCategory();
+    }
+
+    if (userChoice == 3) {
+      PrintManager.clearConsole();
+      this.displayViewExpendituresByAmount();
+    }
+
+    if (userChoice == 4) {
+      PrintManager.clearConsole();
+      this.displayViewExpendituresByDate();
+    }
+  }
 }
 
 public class App {
@@ -148,7 +276,7 @@ public class App {
         displayManager.displayAddExpenditureCategory();
       } else if (userEntry == 3) {
         userEntry = 0;
-        InputManager.promptEnterKey("View expenditures..."); 
+        displayManager.displayViewExpendituresMenu();
       } else if (userEntry == 4) {
         System.out.println("Exiting program...");
         SerializationManager.serialize(accountsManager);
