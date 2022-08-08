@@ -1,8 +1,9 @@
 package account;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class AccountsManager {
+public class AccountsManager implements Serializable {
   private int loggedInAccountId;
   private ArrayList<Account> accounts;
 
@@ -16,6 +17,10 @@ public class AccountsManager {
     }
 
     return false;
+  }
+
+  public ArrayList<Account> getAccounts() {
+    return this.accounts;
   }
 
   public boolean login(String username, String password) {

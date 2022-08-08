@@ -3,7 +3,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-
 import account.Account;
 import account.AccountsManager;
 
@@ -13,7 +12,6 @@ import expense.ExpenditureCategory;
 import util.InputManager;
 import util.PrintManager;
 import util.SerializationManager;
-
 
 class DisplayManager {
   private InputManager inputManager;
@@ -111,8 +109,6 @@ class DisplayManager {
       String expenditureCategoryName = categoryNames[userChoice <= 0 ? 0 : userChoice - 1];
       String expenseName = this.inputManager.getUserInlineTextInput("What was the expense for: ");
       String amount = this.inputManager.getUserInlineTextInput("How much did you spend: ");
-    
-
 
       Expenditure newExpenditure = new Expenditure(expenseName, Double.parseDouble(amount), expenditureCategoryName);
       this.accountsManager.getCurrentAccount().addExpenditure(newExpenditure);
@@ -124,7 +120,7 @@ class DisplayManager {
   public void displayAddExpenditureCategory() throws IOException {
     PrintManager.displayHorizontalLine();
     PrintManager.displayBreadcrumbs("Main Menu / Add Expenditure Category");
-    String name = this.inputManager.getUserInlineTextInput("Enter expenditure category name: ");
+    String name = this.inputManager.getUserInlineTextInput("Enter expenditue category name: ");
     String description = this.inputManager.getUserInlineTextInput("Enter expenditure category description: ");
 
     ExpenditureCategory newExpenditureCategory = new ExpenditureCategory(name, description);
@@ -137,6 +133,7 @@ class DisplayManager {
     PrintManager.displayHorizontalLine();
     PrintManager.displayBreadcrumbs("Main Menu / View Expenditures");
     ArrayList<Expenditure> expenditures = this.accountsManager.getCurrentAccount().getExpenditures();
+
     if (expenditures.size() <= 0) {
       System.out.println("No expenditures found!");
     } else {
@@ -144,6 +141,7 @@ class DisplayManager {
         System.out.println(expenditure.toString());
       }
     }
+
     InputManager.promptEnterKey("Press Enter to return to main menu...");
   }
 
@@ -155,6 +153,7 @@ class DisplayManager {
     int userChoice = this.inputManager.getUserOptionChoice();
     String expenditureCategoryName = categoryNames[userChoice <= 0 ? 0 : userChoice - 1];
     ArrayList<Expenditure> expenditures = this.accountsManager.getCurrentAccount().getExpendituresByCategory(expenditureCategoryName);
+  
     if (expenditures.size() <= 0) {
       System.out.println("No expenditures found!");
     } else {
@@ -162,8 +161,8 @@ class DisplayManager {
         System.out.println(expenditure.toString());
       }
     }
-    InputManager.promptEnterKey("Press Enter to return to main menu...");
- 
+
+    InputManager.promptEnterKey("Press Enter to return to main menu..."); 
   }
 
   public void viewExpendituresByAmount() throws IOException{
@@ -207,69 +206,32 @@ class DisplayManager {
 
 public class App {
   public static void main(String[] args) throws Exception {
-    Scanner input = new Scanner(System.in);
-  
+    AccountsManager accountsManager = SerializationManager.deserialize();
+    InputManager inputManager = new InputManager();
+    DisplayManager displayManager = new DisplayManager(inputManager, accountsManager);
+
+    displayManager.displayInitialMenu();
+
+    int userEntry = 0;
+
     while (true) {
-    //LOGIN LOGIC
-      System.out.println("Main Window");
-      System.out.println("==========================");
-      System.out.println("1. Add an Expenditure");
-      System.out.println("2. Add an Expenditure Category");
-      System.out.println("3. View Expenditures");
-      System.out.println("4. Quit");
-      System.out.print("Enter your choice: ");
-    
-      int choice = Integer.parseInt(input.nextLine());
+      PrintManager.clearConsole();
 
-      if (choice == 1) {
-        System.out.println("\033[H\033[2J");
-        System.out.println("Add an Expenditure");
-        System.out.println("Enter the name of the expenditure: ");
-        String name = input.nextLine();
-        System.out.println("Enter the amount of the expenditure: ");
-        double amount = Double.parseDouble(input.nextLine());
-        System.out.println("Enter the Category of the expenditure: ");
-        String category = input.nextLine();
-        //if category does not exist in Expenditure Category Array ask again/ try again or return to menu
-        //Get date manually or automatically
-        //need expenditure class
-        Expenditure expenditure = new Expenditure(name, amount, category);
-
-        //Add to array of expenditures
-      } else if (choice == 2) {
-        System.out.println("\033[H\033[2J");
-        System.out.println("Add an Expenditure Category");
-        System.out.println("Enter the name of the expenditure category: ");
-        String catname = input.nextLine(); 
-        //need expenditure category class
-        ExpenditureCategory expenditureCategory = new ExpenditureCategory(catname);
-
-        //Add to array of expenditure categories
-      } else if(choice == 3){
-        System.out.println("1. Filter by Category");
-        System.out.println("2. Filter by Date");
-        System.out.println("3. Filter by Amount");
-        System.out.print("Enter your choice: ");
-        int searchType = Integer.parseInt(input.nextLine());
-
-        if (searchType == 1) {
-          //Insert search by category logic
-        } else if (searchType == 2) {
-          //Insert search by date logic
-        } else if(searchType == 3){
-          //Insert search by amount logic
-        } else {
-          System.out.println("Invalid input, returning to main menu");
-          //short wait time here
-          System.out.println("\033[H\033[2J");
-          continue;
-        }
-      } else if (choice == 4) {
-        // When the user quits, we need to serialize the data and save it locally
-        System.out.println("Quitting...");
-        //insert short wait time here
-        System.out.println("\033[H\033[2J");
+      if (userEntry == 1) {
+        userEntry = 0;
+        displayManager.displayAddExpenditure();
+      } else if (userEntry == 2) {
+        userEntry = 0;
+        displayManager.displayAddExpenditureCategory();
+      } else if (userEntry == 3) {
+        userEntry = 0;
+        InputManager.promptEnterKey("View expenditures..."); 
+      } else if (userEntry == 4) {
+        System.out.println("Exiting program...");
+        SerializationManager.serialize(accountsManager);
         break;
+      } else {
+        userEntry = displayManager.displayMainMenu();
       }
     }
   }

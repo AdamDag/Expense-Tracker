@@ -1,15 +1,29 @@
 package account;
 
-public class Account {
+import java.io.Serializable;
+import java.util.ArrayList;
+
+import expense.Expenditure;
+import expense.ExpenditureCategory;
+
+public class Account implements Serializable {
   private static int count = 0;
   private String username;
   private String password;
   private int id;
+  private ArrayList<Expenditure> expenditures;
+  private ArrayList<ExpenditureCategory> expenditureCategories;
 
   public Account(String username, String password) {
     this.username = username;
     this.password = password;
     this.id = count++;
+    this.expenditures = new ArrayList<Expenditure>();
+    this.expenditureCategories = new ArrayList<ExpenditureCategory>();
+  }
+
+  public static void setCount(int count) {
+    Account.count = count;
   }
 
   public String getUsername() {
@@ -23,8 +37,6 @@ public class Account {
   public boolean authenticate(String username, String password) {
     return this.username.equals(username) && this.password.equals(password);
   }
-<<<<<<< Updated upstream
-=======
 
   public void addExpenditure(Expenditure expenditure) {
     this.expenditures.add(expenditure);
@@ -55,12 +67,13 @@ public class Account {
 
   public ArrayList<Expenditure> getExpendituresByCategory(String expenditureCategoryName) {
     ArrayList<Expenditure> expenditures = new ArrayList<Expenditure>();
+
     for (Expenditure expenditure : this.expenditures) {
       if (expenditure.getCategoryName().equals(expenditureCategoryName)) {
         expenditures.add(expenditure);
       }
     }
+
     return expenditures;
   }
->>>>>>> Stashed changes
 }
