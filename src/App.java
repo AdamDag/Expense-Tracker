@@ -129,7 +129,7 @@ class DisplayManager {
     InputManager.promptEnterKey("Expenditure category added! Press Enter to return to main menu...");
   }
 
-  public void displayViewAllExpenditures() throws IOException{
+  private void displayViewAllExpenditures() throws IOException{
     PrintManager.displayHorizontalLine();
     PrintManager.displayBreadcrumbs("Main Menu / View Expenditures / View all");
     ArrayList<Expenditure> expenditures = this.accountsManager.getCurrentAccount().getExpenditures();
@@ -149,7 +149,7 @@ class DisplayManager {
     InputManager.promptEnterKey("Press Enter to return to main menu...");
   }
 
-  public void displayViewExpendituresByCategory() throws IOException{
+  private void displayViewExpendituresByCategory() throws IOException{
     PrintManager.displayHorizontalLine();
     PrintManager.displayBreadcrumbs("Main Menu / View Expenditures / View by category");
     String[] categoryNames = this.accountsManager.getCurrentAccount().getExpenditureCategoryNames();
@@ -173,7 +173,7 @@ class DisplayManager {
     InputManager.promptEnterKey("Press Enter to return to main menu..."); 
   }
 
-  public void displayViewExpendituresByAmount() throws IOException{
+  private void displayViewExpendituresByAmount() throws IOException{
     PrintManager.displayHorizontalLine();
     PrintManager.displayBreadcrumbs("Main Menu / View Expenditures / View by amount");
     ArrayList<Expenditure> expenditures = this.accountsManager.getCurrentAccount().getExpenditures();
@@ -195,7 +195,7 @@ class DisplayManager {
     InputManager.promptEnterKey("Press Enter to return to main menu..."); 
   }
 
-  public void displayViewExpendituresByDate() throws IOException{
+  private void displayViewExpendituresByDate() throws IOException{
     PrintManager.displayHorizontalLine();
     PrintManager.displayBreadcrumbs("Main Menu / View Expenditures / View by date");
     ArrayList<Expenditure> expenditures = this.accountsManager.getCurrentAccount().getExpenditures();

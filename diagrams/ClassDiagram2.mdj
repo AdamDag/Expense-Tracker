@@ -3358,7 +3358,7 @@
 											"top": 918,
 											"width": 259.5302734375,
 											"height": 13,
-											"text": "+displayViewAllExpenditures(): void",
+											"text": "-displayViewAllExpenditures(): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -3375,7 +3375,7 @@
 											"top": 933,
 											"width": 259.5302734375,
 											"height": 13,
-											"text": "+displayViewExpendituresByCategory(): void",
+											"text": "-displayViewExpendituresByCategory(): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -3392,7 +3392,7 @@
 											"top": 948,
 											"width": 259.5302734375,
 											"height": 13,
-											"text": "+displayViewExpendituresByAmount(): void",
+											"text": "-displayViewExpendituresByAmount(): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -3409,7 +3409,7 @@
 											"top": 963,
 											"width": 259.5302734375,
 											"height": 13,
-											"text": "+displayViewExpendituresByDate(): void",
+											"text": "-displayViewExpendituresByDate(): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -4904,6 +4904,7 @@
 								"$ref": "AAAAAAGChjm+d2WGYjA="
 							},
 							"name": "displayViewAllExpenditures",
+							"visibility": "private",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -4923,6 +4924,7 @@
 								"$ref": "AAAAAAGChjm+d2WGYjA="
 							},
 							"name": "displayViewExpendituresByCategory",
+							"visibility": "private",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -4942,6 +4944,7 @@
 								"$ref": "AAAAAAGChjm+d2WGYjA="
 							},
 							"name": "displayViewExpendituresByAmount",
+							"visibility": "private",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -4961,6 +4964,7 @@
 								"$ref": "AAAAAAGChjm+d2WGYjA="
 							},
 							"name": "displayViewExpendituresByDate",
+							"visibility": "private",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
