@@ -64,4 +64,16 @@ public class Account implements Serializable {
 
     return categoryNames;
   }
+
+  public ArrayList<Expenditure> getExpendituresByCategory(String expenditureCategoryName) {
+    ArrayList<Expenditure> expenditures = new ArrayList<Expenditure>();
+
+    for (Expenditure expenditure : this.expenditures) {
+      if (expenditure.getCategoryName().equals(expenditureCategoryName)) {
+        expenditures.add(expenditure);
+      }
+    }
+
+    return expenditures;
+  }
 }
