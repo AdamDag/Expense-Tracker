@@ -5,39 +5,6 @@
 	"ownedElements": [
 		{
 			"_type": "UMLModel",
-			"_id": "AAAAAAFF+qBWK6M3Z8Y=",
-			"_parent": {
-				"$ref": "AAAAAAFF+h6SjaM2Hec="
-			},
-			"name": "Model",
-			"ownedElements": [
-				{
-					"_type": "UMLClassDiagram",
-					"_id": "AAAAAAFF+qBtyKM79qY=",
-					"_parent": {
-						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
-					},
-					"name": "Main",
-					"defaultDiagram": true,
-					"ownedViews": [
-						{
-							"_type": "EllipseView",
-							"_id": "AAAAAAGCYLIowfcyu3U=",
-							"_parent": {
-								"$ref": "AAAAAAFF+qBtyKM79qY="
-							},
-							"font": "Arial;13;0",
-							"left": 144,
-							"top": 264,
-							"width": 120,
-							"height": 50
-						}
-					]
-				}
-			]
-		},
-		{
-			"_type": "UMLModel",
 			"_id": "AAAAAAGCYLKyIfc2EqU=",
 			"_parent": {
 				"$ref": "AAAAAAFF+h6SjaM2Hec="
@@ -50,110 +17,8 @@
 					"_parent": {
 						"$ref": "AAAAAAGCYLKyIfc2EqU="
 					},
-					"name": "UseCaseDiagram1",
+					"name": "ExpenseTrackerUseCaseDiagram",
 					"ownedViews": [
-						{
-							"_type": "UMLPackageView",
-							"_id": "AAAAAAGCZBk3bSmzSxo=",
-							"_parent": {
-								"$ref": "AAAAAAGCYLKyIvc3M0s="
-							},
-							"model": {
-								"$ref": "AAAAAAGCZBk3bSmxJ/c="
-							},
-							"subViews": [
-								{
-									"_type": "UMLNameCompartmentView",
-									"_id": "AAAAAAGCZBk3bim0FKQ=",
-									"_parent": {
-										"$ref": "AAAAAAGCZBk3bSmzSxo="
-									},
-									"model": {
-										"$ref": "AAAAAAGCZBk3bSmxJ/c="
-									},
-									"subViews": [
-										{
-											"_type": "LabelView",
-											"_id": "AAAAAAGCZBk3bim1jiM=",
-											"_parent": {
-												"$ref": "AAAAAAGCZBk3bim0FKQ="
-											},
-											"visible": false,
-											"font": "Arial;13;0",
-											"left": 16,
-											"top": 144,
-											"height": 13
-										},
-										{
-											"_type": "LabelView",
-											"_id": "AAAAAAGCZBk3bim20zI=",
-											"_parent": {
-												"$ref": "AAAAAAGCZBk3bim0FKQ="
-											},
-											"font": "Arial;13;1",
-											"left": 117,
-											"top": 134,
-											"width": 990,
-											"height": 13,
-											"text": "ExpenseTrackerUseCaseDiagram"
-										},
-										{
-											"_type": "LabelView",
-											"_id": "AAAAAAGCZBk3bim3PRU=",
-											"_parent": {
-												"$ref": "AAAAAAGCZBk3bim0FKQ="
-											},
-											"visible": false,
-											"font": "Arial;13;0",
-											"left": 16,
-											"top": 144,
-											"width": 80.9072265625,
-											"height": 13,
-											"text": "(from Model1)"
-										},
-										{
-											"_type": "LabelView",
-											"_id": "AAAAAAGCZBk3bim4chA=",
-											"_parent": {
-												"$ref": "AAAAAAGCZBk3bim0FKQ="
-											},
-											"visible": false,
-											"font": "Arial;13;0",
-											"left": 16,
-											"top": 144,
-											"height": 13,
-											"horizontalAlignment": 1
-										}
-									],
-									"font": "Arial;13;0",
-									"left": 112,
-									"top": 127,
-									"width": 1000,
-									"height": 25,
-									"stereotypeLabel": {
-										"$ref": "AAAAAAGCZBk3bim1jiM="
-									},
-									"nameLabel": {
-										"$ref": "AAAAAAGCZBk3bim20zI="
-									},
-									"namespaceLabel": {
-										"$ref": "AAAAAAGCZBk3bim3PRU="
-									},
-									"propertyLabel": {
-										"$ref": "AAAAAAGCZBk3bim4chA="
-									}
-								}
-							],
-							"font": "Arial;13;0",
-							"containerChangeable": true,
-							"left": 112,
-							"top": 112,
-							"width": 1000,
-							"height": 664,
-							"nameCompartment": {
-								"$ref": "AAAAAAGCZBk3bim0FKQ="
-							}
-						},
 						{
 							"_type": "UMLActorView",
 							"_id": "AAAAAAGCYLQvkPdgLnE=",
@@ -3402,6 +3267,55 @@
 							"propertyLabel": {
 								"$ref": "AAAAAAGCYMEX4VpmpGw="
 							}
+						},
+						{
+							"_type": "UMLFrameView",
+							"_id": "AAAAAAGCi7tR21uQDrU=",
+							"_parent": {
+								"$ref": "AAAAAAGCYLKyIvc3M0s="
+							},
+							"model": {
+								"$ref": "AAAAAAGCYLKyIvc3M0s="
+							},
+							"subViews": [
+								{
+									"_type": "LabelView",
+									"_id": "AAAAAAGCi7tR21uRpbM=",
+									"_parent": {
+										"$ref": "AAAAAAGCi7tR21uQDrU="
+									},
+									"font": "Arial;13;0",
+									"left": 312.72998046875,
+									"top": 125,
+									"width": 197.75830078125,
+									"height": 13,
+									"text": "ExpenseTrackerUseCaseDiagram"
+								},
+								{
+									"_type": "LabelView",
+									"_id": "AAAAAAGCi7tR21uS74A=",
+									"_parent": {
+										"$ref": "AAAAAAGCi7tR21uQDrU="
+									},
+									"font": "Arial;13;1",
+									"left": 293,
+									"top": 125,
+									"width": 14.72998046875,
+									"height": 13,
+									"text": "uc"
+								}
+							],
+							"font": "Arial;13;0",
+							"left": 288,
+							"top": 120,
+							"width": 865,
+							"height": 569,
+							"nameLabel": {
+								"$ref": "AAAAAAGCi7tR21uRpbM="
+							},
+							"frameTypeLabel": {
+								"$ref": "AAAAAAGCi7tR21uS74A="
+							}
 						}
 					]
 				},
@@ -3748,14 +3662,6 @@
 							}
 						}
 					]
-				},
-				{
-					"_type": "UMLPackage",
-					"_id": "AAAAAAGCZBk3bSmxJ/c=",
-					"_parent": {
-						"$ref": "AAAAAAGCYLKyIfc2EqU="
-					},
-					"name": "ExpenseTrackerUseCaseDiagram"
 				},
 				{
 					"_type": "UMLPackage",
